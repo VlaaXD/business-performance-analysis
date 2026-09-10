@@ -214,8 +214,6 @@ Total Revenue calculates the total value generated from customer orders and dyna
 
 The analyzed dataset generated approximately **571.26K in total order value**.
 
-![Total Revenue DAX](images/dax-total-revenue.jpg.jpg)
-
 ![Total Revenue KPI](images/kpi-total-revenue.jpg.jpg)
 
 ---
