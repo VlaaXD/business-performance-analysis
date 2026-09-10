@@ -1,115 +1,150 @@
-# 📊 Business Performance Analysis
+# 📊 End-to-End Sales Data Analysis
 
-## About the Project
-
-This project is an end-to-end business and financial data analysis portfolio project.
-
-The objective is to simulate a real-world data analyst workflow: starting with raw business data, preparing and validating the dataset with Python, building a structured data model, and developing an interactive Power BI dashboard for business analysis.
-
-The project focuses not only on technical data processing, but also on identifying trends, understanding business performance, and turning data into actionable insights.
+> An end-to-end Data Analyst portfolio project covering data preparation, 
+> relational database design, SQL analysis and interactive business intelligence reporting.
 
 ---
 
-## 🎯 Project Objectives
+## 🎯 Project Overview
 
-The main objectives of the project are to:
+This project demonstrates a complete **end-to-end data analytics workflow**, 
+starting with raw CSV files and finishing with an interactive **Power BI dashboard**.
 
-- Clean and prepare raw business data using Python
-- Identify and handle data quality issues
-- Create calculated business and financial metrics
-- Build a structured dataset for reporting
-- Develop an interactive Power BI dashboard
-- Analyze revenue, profitability and business performance
-- Identify key trends and performance drivers
-- Translate analytical findings into business insights
+The project is based on two related datasets containing:
 
----
+- 🧾 **5,000 customer orders**
+- 📦 **20 products**
+- 📅 Sales data covering **2025 and January–August 2026**
+- 💰 Revenue, cost, discount, product and sales information
 
-## 🛠️ Tools & Technologies
-
-- **Python**
-- **Pandas**
-- **Jupyter Notebook**
-- **Power BI**
-- **DAX**
-- **Git & GitHub**
-
----
-
-## 📁 Project Structure
-
-    business-performance-analysis/
-    │
-    ├── data/
-    │   ├── raw/
-    │   └── processed/
-    │
-    ├── notebooks/
-    │
-    ├── powerbi/
-    │
-    ├── images/
-    │
-    ├── README.md
-    └── .gitignore
-
-### Folder Description
-
-**data/raw**  
-Contains the original source datasets before any transformation or cleaning.
-
-**data/processed**  
-Contains cleaned and transformed datasets prepared for analysis and Power BI.
-
-**notebooks**  
-Contains the Python/Jupyter notebooks used for data exploration, cleaning, transformation and validation.
-
-**powerbi**  
-Contains the Power BI report developed from the processed data.
-
-**images**  
-Contains screenshots and visual previews of the final dashboard.
+The objective was to transform and validate the raw data using **Python and Pandas**, 
+store the cleaned datasets in a relational **PostgreSQL database**, perform business 
+analysis using **SQL**, and develop an interactive **Power BI dashboard** using DAX.
 
 ---
 
 ## 🔄 Project Workflow
 
-    Raw Data
-        ↓
-    Data Exploration
-        ↓
-    Data Cleaning
-        ↓
-    Data Transformation
-        ↓
-    Data Validation
-        ↓
-    Data Modeling
-        ↓
-    Power BI
-        ↓
-    Business Analysis & Insights
+**CSV Data → Python & Pandas → PostgreSQL → SQL Analysis → Power BI & DAX → Business Insights**
 
 ---
 
-## 📈 Analysis
+## 🛠️ Tools & Technologies
 
-The analytical part of the project will focus on areas such as:
-
-- Revenue performance
-- Gross profit and profitability
-- Gross margin
-- Year-over-year performance
-- Product performance
-- Customer performance
-- Regional performance
-- Sales trends
-- Actual vs. target performance
+| Technology | Usage |
+|---|---|
+| 🐍 **Python** | Data preparation, transformation and validation |
+| 🐼 **Pandas** | Data cleaning and dataset manipulation |
+| 📓 **Jupyter Notebook** | Development and documentation of the Python workflow |
+| 🐘 **PostgreSQL** | Relational database storage |
+| 🔎 **SQL** | Joins, aggregations and business analysis |
+| 📊 **Power BI** | Data modeling and interactive dashboard development |
+| 🧮 **DAX** | Revenue, profit, margin and KPI calculations |
 
 ---
 
-## 🚧 Project Status
+# 🐍 01 — Data Preparation with Python
 
-**In Development**
+The project started with two raw CSV datasets containing **order-level** and 
+**product-level** data.
 
-The project is currently being developed. Data preparation, analysis, Power BI dashboards and business findings will be added progressively.
+Python and Pandas were used to inspect, clean, transform and validate the datasets 
+before loading them into PostgreSQL.
+
+### 🔍 Data validation included
+
+- Checking and correcting data types
+- Removing unnecessary whitespace and formatting inconsistencies
+- Checking for missing values
+- Validating primary key uniqueness
+- Validating relationships between the datasets
+- Standardizing column names
+
+The following relationship checks were also performed:
+
+- `order_id` is unique in the Orders dataset
+- `product_id` is unique in the Products dataset
+- Every `product_id` referenced by an order exists in Products
+- The dataset intentionally contains **5 products without recorded orders**
+
+This final point makes it possible to analyze both products with sales activity and 
+products that have never generated an order.
+
+📸 **Python data preparation example**
+
+![Python Data Preparation](images/python-cleaning.png)
+
+---
+
+# 🐘 02 — PostgreSQL Database & Data Model
+
+After data preparation and validation, the cleaned datasets were loaded into a 
+**PostgreSQL relational database** using Python and SQLAlchemy.
+
+The database contains two related tables:
+
+### 📦 Products
+
+Contains product-level descriptive information including:
+
+`product_id`, product name, category, brand, manufacturing location, size, color, 
+base price, unit cost and other product attributes.
+
+### 🧾 Orders
+
+Contains transactional sales information including:
+
+`order_id`, `product_id`, `customer_id`, quantity, price, discounts, order value, 
+shipping information, sales channel, payment method and order status.
+
+### 🔗 Relationship
+
+The tables are connected through `product_id` using a **one-to-many relationship**:
+
+**Products (1) → Orders (*)**
+
+`products.product_id` serves as the **Primary Key**, while 
+`orders.product_id` serves as the corresponding **Foreign Key**.
+
+This structure allows transactional sales data to be analyzed together with 
+descriptive product information.
+
+📸 **Data Model**
+
+![Data Model](images/data-model.png)
+
+---
+
+# 🔎 03 — SQL Business Analysis
+
+After loading the datasets into PostgreSQL, SQL was used to explore the data and 
+answer business-oriented questions.
+
+### 💡 Business questions investigated
+
+- Which products generated the highest total revenue?
+- Which product categories generated the most revenue and orders?
+- Which products have no recorded sales?
+- How does revenue change over time?
+
+The analysis demonstrates the use of:
+
+`JOIN`, `LEFT JOIN`, `GROUP BY`, `SUM`, `COUNT`, `ORDER BY`, date filtering and 
+aggregate calculations.
+
+### 🏆 Example — Top 5 Products by Revenue
+
+```sql
+SELECT
+    p.product_id,
+    p.product_name,
+    SUM(o.order_value) AS total_order_value
+FROM products p
+INNER JOIN orders o
+    ON p.product_id = o.product_id
+GROUP BY
+    p.product_id,
+    p.product_name
+ORDER BY
+    total_order_value DESC
+LIMIT 5;
