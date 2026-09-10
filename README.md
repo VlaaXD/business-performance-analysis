@@ -203,6 +203,23 @@ The resulting KPI shows a total of **5,000 customer orders** across the complete
 
 ---
 
+### 💵 Total Revenue
+
+```DAX
+Total Revenue =
+SUM('public orders'[order_value])
+```
+
+Total Revenue calculates the total value generated from customer orders and dynamically responds to all filters applied within the Power BI dashboard.
+
+The analyzed dataset generated approximately **571.26K in total order value**.
+
+![Total Revenue DAX](images/dax-total-revenue.jpg.jpg)
+
+![Total Revenue KPI](images/kpi-total-revenue.jpg.jpg)
+
+---
+
 ### 💰 Total Profit
 
 ```DAX
@@ -219,32 +236,11 @@ SUMX(
 
 Total Profit represents the estimated profit generated from customer orders after subtracting the corresponding product costs.
 
-![Total Profit DAX](images/dax-total-profit.jpg.jpg)
-
 The calculation resulted in approximately **224.98K total estimated profit** across the analyzed dataset.
 
+![Total Profit DAX](images/dax-total-profit.jpg.jpg)
+
 ![Total Profit KPI](images/kpi-total-profit.jpg.jpg)
-
----
-
-### 📈 Profit Margin
-
-```DAX
-Profit Margin % =
-DIVIDE(
-    [Total Profit],
-    SUM('public orders'[order_value]),
-    0
-)
-```
-
-Profit Margin measures the percentage of generated revenue remaining after subtracting the product costs included in the analysis.
-
-The final dashboard reports an overall **profit margin of 39.38%**.
-
-This means approximately **39% of sales revenue remains after the product costs included in the calculation**.
-
-The metric provides a useful high-level indicator for comparing profitability across products, categories, time periods, and other dashboard segments.
 
 ---
 
@@ -252,7 +248,11 @@ The metric provides a useful high-level indicator for comparing profitability ac
 
 The final stage of the project combines the prepared data, relational database model, SQL analysis, and DAX calculations into a single **interactive Power BI dashboard**.
 
-The dashboard was designed to provide a concise overview of overall sales performance while still allowing users to explore individual business segments.
+The dashboard was designed to provide a concise overview of overall sales performance while allowing users to explore individual business segments and analyze changes across different filters.
+
+### 📊 Final Dashboard
+
+![Power BI Sales Dashboard](images/power-bi-dashboard.jpg.jpg)
 
 ### 🎛️ Interactive Filters
 
@@ -265,11 +265,21 @@ Users can dynamically filter the dashboard by:
 
 All KPIs and visualizations respond dynamically to these filters.
 
+The dashboard provides analysis across several business areas, including:
+
+- 💰 **Total Order Value**
+- 📈 **Total Profit**
+- 📊 **Profit Margin**
+- 📦 **Total Orders**
+- 🏆 **Product Performance**
+- 🧩 **Product Category Performance**
+- 🛒 **Sales Channel Performance**
+- 📅 **Monthly Revenue Trends**
+- 📆 **Daily Order Volume**
+
 ---
 
 ## 📊 Dashboard KPIs
-
-The dashboard contains four primary KPI indicators:
 
 | KPI | Result |
 |---|---:|
@@ -278,127 +288,4 @@ The dashboard contains four primary KPI indicators:
 | 📊 **Profit Margin** | **39.38%** |
 | 📦 **Total Orders** | **5,000** |
 
-Together, these metrics provide an immediate overview of revenue generation, profitability, and sales activity.
-
----
-
-# 💡 06 — Key Business Insights
-
-The final analysis produced several business-oriented findings from the dataset.
-
-### 💰 Overall Sales Performance
-
-The analyzed customer orders generated approximately **571.26K in total order value** and **224.98K in estimated profit**.
-
-The resulting overall **profit margin is 39.38%**, indicating that a substantial share of sales revenue remains after accounting for the product costs included in the analysis.
-
----
-
-### 🏆 Product Performance
-
-The strongest-performing products by total revenue were:
-
-1. **Pulse Smartwatch** — approximately **93.6K**
-2. **AeroFlex Running Shoes** — approximately **83.2K**
-3. **TrailGuard Hiking Boots** — approximately **80.9K**
-4. **UrbanStep Sneakers** — approximately **56.2K**
-5. **EchoBuds Wireless Earbuds** — approximately **47.3K**
-
-This indicates that a relatively small group of products contributes a significant share of overall revenue.
-
----
-
-### 🧩 Product Category Performance
-
-Product category analysis shows that revenue is not distributed evenly across categories.
-
-**Footwear** represents the largest revenue contribution in the analyzed dataset, making it a particularly important category from a sales-performance perspective.
-
-Category-level analysis helps identify which product groups contribute most strongly to overall business performance.
-
----
-
-### 📦 Products Without Sales
-
-The relational dataset intentionally contains **5 products without recorded orders**.
-
-Using a `LEFT JOIN` between Products and Orders made it possible to identify these products separately.
-
-This demonstrates how SQL can be used not only to analyze successful products but also to identify products with **no recorded sales activity**.
-
----
-
-### 📅 Sales Trends
-
-Monthly analysis shows that revenue fluctuates throughout the analyzed period rather than remaining constant.
-
-The dataset covers the complete **2025 calendar year**, while **2026 only contains sales through August**.
-
-Therefore, 2026 should be treated as a **partial-year dataset**, and its total performance should not be directly compared with the complete 2025 year without accounting for the difference in coverage.
-
----
-
-# 🎯 Project Outcome
-
-This project demonstrates a complete Data Analyst workflow rather than focusing on a single tool.
-
-The analysis covers the complete process from raw data to business reporting:
-
-### 🔄 End-to-End Pipeline
-
-**Raw CSV Data**  
-⬇️  
-**Python & Pandas Data Preparation**  
-⬇️  
-**Data Cleaning & Validation**  
-⬇️  
-**PostgreSQL Relational Database**  
-⬇️  
-**SQL Business Analysis**  
-⬇️  
-**Power BI Data Model**  
-⬇️  
-**DAX Measures & KPIs**  
-⬇️  
-**Interactive Dashboard**  
-⬇️  
-**Business Insights**
-
----
-
-## 🚀 Skills Demonstrated
-
-Through this project, I demonstrated practical experience with:
-
-- 🐍 **Python-based data preparation**
-- 🐼 **Pandas data cleaning and transformation**
-- 🔍 **Data quality validation**
-- 🐘 **PostgreSQL relational database design**
-- 🔗 **Primary Key / Foreign Key relationships**
-- 🔎 **SQL joins and aggregations**
-- 💡 **Business-oriented SQL analysis**
-- 📊 **Power BI data modeling**
-- 🧮 **DAX measure development**
-- 📈 **KPI development**
-- 🎛️ **Interactive dashboard design**
-- 💼 **Translating data into business insights**
-
----
-
-## 📌 Summary
-
-The project demonstrates how multiple analytics technologies can be combined into one structured workflow.
-
-Rather than analyzing data only inside a visualization tool, the project separates the analytics process into distinct stages: **data preparation, validation, relational storage, SQL analysis, data modeling, visualization, and business interpretation**.
-
-This structure reflects a practical end-to-end Data Analyst workflow and demonstrates the ability to work across both the **technical** and **business-facing** sides of analytics.
-
----
-
-### 🛠️ Technology Stack
-
-`Python` • `Pandas` • `Jupyter Notebook` • `PostgreSQL` • `SQL` • `SQLAlchemy` • `Power BI` • `DAX`
-
----
-
-⭐ **End-to-End Sales Data Analysis — Data Analyst Portfolio Project**
+The dashboard therefore provides both a high-level view of business performance and the ability to investigate individual products, categories, channels, and time periods.
