@@ -238,7 +238,6 @@ Total Profit represents the estimated profit generated from customer orders afte
 
 The calculation resulted in approximately **224.98K total estimated profit** across the analyzed dataset.
 
-![Total Profit DAX](images/dax-total-profit.jpg.jpg)
 
 ![Total Profit KPI](images/kpi-total-profit.jpg.jpg)
 
