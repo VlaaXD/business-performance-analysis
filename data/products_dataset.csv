@@ -1,0 +1,21 @@
+﻿product_id,product_name,product_category,brand,manufacturing_city,size,color,SKU,base_price,unit_cost,supplier_id,launch_date,active_product
+86989,AeroFlex Running Shoes,Footwear,VeloSport,Debrecen,42,Red,39262906,89.99,50.91,2715,2023-04-09,Yes
+45415,UrbanStep Sneakers,Footwear,MetroWear,Budapest,41,Black,89255363,69.99,42.23,2532,2024-01-07,Yes
+20967,TrailGuard Hiking Boots,Footwear,TerraPeak,Miskolc,40,Olive,88055365,129.99,64.34,2077,2026-02-07,Yes
+85983,CloudWalk Trainers,Footwear,Northline,Győr,44,Navy,32105368,94.99,41.74,6180,2025-04-11,Yes
+77262,Classic Leather Loafers,Footwear,Vero,Pécs,42,Black,38413740,109.99,70.1,3855,2025-11-14,Yes
+51232,CoreFit T-Shirt,Apparel,Form,Szeged,S,Green,96086633,24.99,11.31,9221,2025-12-03,Yes
+72384,Motion Hoodie,Apparel,Form,Budapest,XL,Grey,54460932,59.99,39.93,8850,2024-07-28,Yes
+23801,ActiveDry Shorts,Apparel,VeloSport,Kecskemét,XL,Blue,98746525,34.99,22.09,1444,2025-09-25,Yes
+95437,Everyday Chino Pants,Apparel,MetroWear,Győr,36,Olive,87664190,54.99,24.7,7233,2023-02-12,Yes
+39892,StormShell Jacket,Apparel,TerraPeak,Sopron,XL,Olive,15726991,119.99,73.71,5756,2026-02-11,Yes
+15378,Pulse Smartwatch,Electronics,Nexa,Budapest,Standard,Black,23074080,179.99,115.03,6100,2026-03-20,Yes
+49073,EchoBuds Wireless Earbuds,Electronics,Nexa,Székesfehérvár,Standard,Blue,63129379,89.99,52.44,3321,2025-05-13,Yes
+37136,VoltCharge Power Bank,Electronics,Voltix,Győr,10000mAh,Black,93891656,49.99,31.51,1852,2024-02-25,Yes
+26644,Beam Mini Bluetooth Speaker,Electronics,Voltix,Debrecen,Standard,Black,16521303,64.99,41.31,5624,2023-04-17,Yes
+17471,HydraSteel Bottle,Accessories,TerraPeak,Szeged,500ml,Blue,99310209,29.99,20.0,6145,2023-09-08,Yes
+83911,Metro Backpack,Accessories,MetroWear,Budapest,20L,Navy,49195336,74.99,41.58,7588,2024-06-03,Yes
+39429,FlexCap Sports Cap,Accessories,VeloSport,Pécs,L/XL,White,26576405,22.99,13.33,9334,2026-01-15,Yes
+15088,Recovery Foam Roller,Fitness,CoreLab,Kecskemét,45cm,Black,66663911,31.99,15.83,2804,2024-08-06,Yes
+99234,GripPro Resistance Bands,Fitness,CoreLab,Debrecen,Light,Blue,88942006,27.99,18.75,1404,2024-03-30,Yes
+10770,Balance Yoga Mat,Fitness,CoreLab,Szeged,4mm,Purple,14141457,44.99,23.63,6881,2023-07-16,Yes
