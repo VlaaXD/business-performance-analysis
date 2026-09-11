@@ -1,4 +1,4 @@
-# 📊 End-to-End Sales Data Analysis
+# 📊 End-to-End Sales Data Analysis EDA
 
 > An end-to-end Data Analyst portfolio project covering data preparation, relational database design, SQL analysis, and interactive business intelligence reporting.
 
